@@ -25,5 +25,14 @@ namespace Loja_de_Roupas
         {
             _produtos.Remove(produto);
         }
+
+        public Produto getProduto(int id) 
+        {
+            foreach(var item in _produtos) if(item._id == id) {
+                return item;
+            }
+
+            return null;
+        }
     }
 }
