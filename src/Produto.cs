@@ -10,9 +10,19 @@ namespace Loja_de_Roupas
         public double _preco { get; set; }
         List<Item> _itens = new List<Item>();
 
-        public bool verificaQuantidade(int id) 
+        public Produto(int id, string nome, double preco) 
         {
-            return true;
+            this._id = id;
+            this._nome = nome;
+            this._preco = preco;
+        }
+        public int verificaQuantidade() 
+        {
+            int quantidade = 0;
+
+            foreach(var item in _itens) quantidade++;
+            
+            return quantidade;
         }
         public void adicionaItem(Item novoItem) 
         {
