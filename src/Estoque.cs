@@ -5,11 +5,15 @@ namespace Loja_de_Roupas
 {
     class Estoque
     {
-        List<Produto> _produtos = new List<Produto>();
+        public List<Produto> _produtos = new List<Produto>();
 
         public bool verificaDisponibilidade(int id) 
         {
-            return true;
+            foreach(var item in _produtos) if(item._id == id) {
+                return true;
+            }
+            
+            return false;
         }
 
         public void entradaProduto(Produto novoProduto) 
