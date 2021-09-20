@@ -4,16 +4,22 @@ using Newtonsoft.Json;
 
 namespace Loja_de_Roupas
 {
-    class Persistencia
+    class Persistencia : IPersistencia
     {
-        public string converteEmJson(Object objeto)
+        string converteEmJson(Object objeto)
         {
             return JsonConvert.SerializeObject(objeto, Formatting.Indented);
         }
 
-        public void salvaJsonEmArquivo(string json)
+        void salvaJsonEmArquivo(string json)
         {
             File.WriteAllText(@"./teste.json", json);
+        }
+
+        public void salvaObjetoEmArquivo(Object objeto)
+        {
+            string jsonString = converteEmJson(objeto);
+            salvaJsonEmArquivo(jsonString);
         }
     }
 }
