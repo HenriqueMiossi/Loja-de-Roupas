@@ -7,7 +7,7 @@ namespace Loja_de_Roupas
     {
         public List<Produto> _produtos = new List<Produto>();
 
-        public bool verificaDisponibilidade(int id) 
+        public bool verificarProduto(int id) 
         {
             foreach(var item in _produtos) if(item._id == id) {
                 return true;
@@ -16,17 +16,17 @@ namespace Loja_de_Roupas
             return false;
         }
 
-        public void entradaProduto(Produto novoProduto) 
+        public void entrarProduto(Produto novoProduto) 
         {
             _produtos.Add(novoProduto);
         }
 
-        public void saidaProduto(Produto produto)
+        public void sairProduto(Produto produto)
         {
             _produtos.Remove(produto);
         }
 
-        public Produto getProduto(int id) 
+        public Produto listarProduto(int id) 
         {
             foreach(var item in _produtos) if(item._id == id) {
                 return item;
