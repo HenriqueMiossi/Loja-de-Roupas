@@ -1,16 +1,22 @@
-using System;
-
 class Loja
 {
-    public string _cnpj { get; set; }
-    public string _nomeFantasia { get; set; }
-    public Endereco _endereco { get; set; }
-    public Estoque _estoque { get; }
+	public string Cnpj { get; }
+	public string NomeFantasia { get; set; }
+	public string NomePropietario { get; set; }
+	public Endereco Endereco { get; set; }
+	public Estoque Estoque { get; set; }
 
-    public Loja(string cnpj, string nomeFantasia, Endereco endereco, Estoque estoque) {
-        this._cnpj = cnpj;
-        this._nomeFantasia = nomeFantasia;
-        this._endereco = endereco;
-        this._estoque = estoque;
-    }
+	public Loja(string cnpj, string nomeFantasia, string nomePropietario, Endereco endereco, Estoque estoque) 
+	{
+		Cnpj = cnpj;
+		NomeFantasia = nomeFantasia;
+		NomePropietario = nomePropietario;
+		Endereco = endereco;
+		Estoque  = estoque;
+	}
+
+	public override string ToString()
+	{
+		return "Cnpj: " + Cnpj + "\nNomeFantasia: " + NomeFantasia + "\nNomePropietario: " + NomePropietario + "\n" + Endereco.ToString() + "\n" + Estoque.ToString;
+	}
 }
