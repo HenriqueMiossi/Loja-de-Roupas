@@ -1,35 +1,33 @@
-using System;
 using System.Collections.Generic;
 
 class Estoque
-{
-    public List<Produto> _produtos = new List<Produto>();
+{ 
+	List<Produto> _produtos = new List<Produto>();
 
-    public bool verificarProduto(int id) 
-    {
-        foreach(var item in _produtos) if(item._id == id) {
-            return true;
-        }
-        
-        return false;
-    }
+	public Estoque() { }
 
-    public void entrarProduto(Produto novoProduto) 
-    {
-        _produtos.Add(novoProduto);
-    }
+	public void EntrarProduto(Produto produto) 
+	{
+		_produtos.Add(produto);
+	}  
 
-    public void sairProduto(Produto produto)
-    {
-        _produtos.Remove(produto);
-    }
+	public void SairProduto(Produto produto)
+	{
+		_produtos.Remove(produto);
+	}  
 
-    public Produto listarProduto(int id) 
-    {
-        foreach(var item in _produtos) if(item._id == id) {
-            return item;
-        }
-
-        return null;
-    }
+	public bool VerificarEstoqueProduto(int id)
+	{
+		return _produtos.Exists(produto => produto.Id == id);
+	}
+	
+	public List<string> ListarEstoque() 
+	{
+		List<string> produtosToString = new List<string>();
+		foreach(Produto produto in _produtos)
+		{
+			produtosToString.Add(produto.ToString());
+		}
+		return produtosToString;
+	}
 }
