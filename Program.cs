@@ -1,12 +1,9 @@
 ﻿using System;
 
-namespace Loja_de_Roupas
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+        Console.WriteLine("Hello World!");
     }
 }
