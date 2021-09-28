@@ -2,5 +2,5 @@ using System.Collections.Generic;
 
 interface IFormaPagamento
 {
-    public void geraNotaFiscal(List<Item> produtos, double precoTotal);
+    public void geraNotaFiscal(List<Produto> produtos, double precoTotal);
 }

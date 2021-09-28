@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 class BoletoBancario : IFormaPagamento
 {
-    public void geraNotaFiscal(List<Item> produtos, double precoTotal)
+    public void geraNotaFiscal(List<Produto> produtos, double precoTotal)
     {
         Dictionary<string, int> notaFiscal = new Dictionary<string, int>();
 
-        foreach (Item item in produtos)
+        foreach (Produto produto in produtos)
         {
-            if(!notaFiscal.ContainsKey(item._itemName))
+            if(!notaFiscal.ContainsKey(produto.Modelo))
             {
-                notaFiscal.Add(item._itemName, 1);
+                notaFiscal.Add(produto.Modelo, 1);
             }
             else 
             {
-                notaFiscal[item._itemName] += 1;
+                notaFiscal[produto.Modelo] += 1;
             }
         }
 

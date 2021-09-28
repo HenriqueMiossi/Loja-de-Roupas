@@ -3,25 +3,25 @@ using System.Collections.Generic;
 
 class CartaoDebito : IFormaPagamento
 {
-    public void geraNotaFiscal(List<Item> produtos, double precoTotal)
+    public void geraNotaFiscal(List<Produto> produtos, double precoTotal)
     {
         Dictionary<string, int> notaFiscal = new Dictionary<string, int>();
 
-        foreach (Item item in produtos)
+        foreach (Produto produto in produtos)
         {
-            if(!notaFiscal.ContainsKey(item._itemName))
+            if(!notaFiscal.ContainsKey(produto.Modelo))
             {
-                notaFiscal.Add(item._itemName, 1);
+                notaFiscal.Add(produto.Modelo, 1);
             }
             else 
             {
-                notaFiscal[item._itemName] += 1;
+                notaFiscal[produto.Modelo] += 1;
             }
         }
 
-        foreach (KeyValuePair<string, int> item in notaFiscal)
+        foreach (KeyValuePair<string, int> Produto in notaFiscal)
         {
-            System.Console.WriteLine($"Produto: {item.Key}, quantidade: {item.Value}");
+            System.Console.WriteLine($"Produto: {Produto.Key}, quantidade: {Produto.Value}");
         }
         System.Console.WriteLine("Forma de pagamento: Cartão de Débito");
         System.Console.WriteLine($"Subtotal: {precoTotal}");
