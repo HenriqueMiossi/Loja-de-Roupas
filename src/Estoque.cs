@@ -1,38 +1,33 @@
-using System;
 using System.Collections.Generic;
 
-namespace Loja_de_Roupas
-{
-    class Estoque
+class Estoque
+{ 
+    List<Produto> _produtos = new List<Produto>();
+
+    public Estoque() { }
+
+    public void EntrarProduto(Produto produto) 
     {
-        public List<Produto> _produtos = new List<Produto>();
+	_produtos.Add(produto);
+    }  
 
-        public bool verificaDisponibilidade(int id) 
-        {
-            foreach(var item in _produtos) if(item._id == id) {
-                return true;
-            }
-            
-            return false;
-        }
+    public void SairProduto(Produto produto)
+    {
+	_produtos.Remove(produto);
+    }  
 
-        public void entradaProduto(Produto novoProduto) 
-        {
-            _produtos.Add(novoProduto);
-        }
+    public bool VerificarEstoqueProduto(int id)
+    {
+	return _produtos.Exists(produto => produto.Id == id);
+    }
 
-        public void saidaProduto(Produto produto)
-        {
-            _produtos.Remove(produto);
-        }
-
-        public Produto getProduto(int id) 
-        {
-            foreach(var item in _produtos) if(item._id == id) {
-                return item;
-            }
-
-            return null;
-        }
+    public List<string> ListarEstoque() 
+    {
+	List<string> produtosToString = new List<string>();
+	foreach(Produto produto in _produtos)
+	{
+	    produtosToString.Add(produto.ToString());
+	}
+	return produtosToString;
     }
 }

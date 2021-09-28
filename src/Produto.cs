@@ -1,37 +1,23 @@
-using System;
-using System.Collections.Generic;
-
-namespace Loja_de_Roupas
+class Produto
 {
-    class Produto
+    public int Id { get; set; }
+    public string Categoria { get; set; }
+    public string Marca { get; set; }
+    public string Modelo { get; set; }
+    public double Preco { get; set; }
+
+    public Produto(int id, string categoria, string marca, string modelo, double preco) 
     {
-        public int _id { get; set; }
-        public string _nome { get; set; }
-        public double _preco { get; set; }
-        List<Item> _itens = new List<Item>();
+	Id = id;
+	Categoria = categoria;
+	Marca = marca;
+	Modelo = modelo;
+	Preco = preco;
+    }
 
-        public Produto(int id, string nome, double preco) 
-        {
-            this._id = id;
-            this._nome = nome;
-            this._preco = preco;
-        }
-        public int verificaQuantidade() 
-        {
-            int quantidade = 0;
-
-            foreach(var item in _itens) quantidade++;
-            
-            return quantidade;
-        }
-        public void adicionaItem(Item novoItem) 
-        {
-            _itens.Add(novoItem);
-        }
-
-        public void removeItem(Item item)
-        {
-            _itens.Remove(item);
-        }
+    public override string ToString()
+    {
+	return "Id: " + Id + "\nCategoria: " + Categoria + "\nMarca: " + Marca + "\nModelo: " + Modelo + "Preço: " + Preco;
     }
 }
+
