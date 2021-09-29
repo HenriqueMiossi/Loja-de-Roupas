@@ -6,17 +6,17 @@ class Loja
     public Endereco Endereco { get; set; }
     public Estoque Estoque { get; set; }
 
-    public Loja(string cnpj, string nomeFantasia, string nomePropietario, Endereco endereco, Estoque estoque) 
+    public Loja(string cnpj, string nomeFantasia, string nomePropietario, Endereco endereco, Estoque estoque)
     {
-	Cnpj = cnpj;
-	NomeFantasia = nomeFantasia;
-	NomePropietario = nomePropietario;
-	Endereco = endereco;
-	Estoque  = estoque;
+        Cnpj = cnpj;
+        NomeFantasia = nomeFantasia;
+        NomePropietario = nomePropietario;
+        Endereco = endereco;
+        Estoque = estoque;
     }
 
     public override string ToString()
     {
-	return "Cnpj: " + Cnpj + "\nNomeFantasia: " + NomeFantasia + "\nNomePropietario: " + NomePropietario + "\n" + Endereco.ToString() + "\n" + Estoque.ToString;
+        return "Cnpj: " + Cnpj + "\nNomeFantasia: " + NomeFantasia + "\nNomePropietario: " + NomePropietario + "\n" + Endereco.ToString() + "\n" + Estoque.ToString;
     }
 }
