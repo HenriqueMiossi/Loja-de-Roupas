@@ -17,6 +17,6 @@ class Loja
 
     public override string ToString()
     {
-        return "Cnpj: " + Cnpj + "\nNomeFantasia: " + NomeFantasia + "\nNomePropietario: " + NomePropietario + "\n" + Endereco.ToString() + "\n" + Estoque.ToString;
+	      return "Cnpj: " + Cnpj + "\nNomeFantasia: " + NomeFantasia + "\nNomePropietario: " + NomePropietario + "\n" + Endereco.ToString();
     }
 }
