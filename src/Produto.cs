@@ -20,4 +20,3 @@ class Produto
         return "Id: " + Id + "\nCategoria: " + Categoria + "\nMarca: " + Marca + "\nModelo: " + Modelo + "Preço: " + Preco;
     }
 }
-
