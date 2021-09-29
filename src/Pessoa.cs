@@ -5,4 +5,6 @@ abstract class Pessoa
 	protected string email;
 	protected Endereco endereco;
 	protected int telefone;
+
+	public override abstract string ToString();
 }
