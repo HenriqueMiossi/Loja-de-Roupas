@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 class Dinheiro : IFormaPagamento
 {
-    public void geraNotaFiscal(List<Produto> produtos, double precoTotal)
+    public void GeraNotaFiscal(List<Produto> produtos, double precoTotal)
     {
         Dictionary<string, int> notaFiscal = new Dictionary<string, int>();
 
