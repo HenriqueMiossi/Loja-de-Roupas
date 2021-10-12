@@ -1,6 +1,16 @@
-class Cliente 
-{
-    List<historicoCompras> _histCompras = new List<historicoCompras>();
+using System.Collections.Generic;
 
-    public List _histCompras {get; set;}
+class Cliente
+{
+    List<Venda> _historicoCompras = new List<Venda>();
+
+    public List<Venda> getHistoricoCompras()
+    {
+        return _historicoCompras;
+    }
+
+    public void addCompra(Venda novaVenda)
+    {
+        _historicoCompras.Add(novaVenda);
+    }
 }
