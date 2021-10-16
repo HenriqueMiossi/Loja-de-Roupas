@@ -23,11 +23,10 @@ class Venda
 	public override string ToString()
 	{
 		string listaProdutos = "";
-		// foreach (Produto produto in _produtos)
-		// {
-		// 	// String.Concat(listaProdutos, "\n" + produto.Id);
-		// 	System.Console.WriteLine(produto.Id);
-		// }
+		foreach (Produto produto in _produtos)
+		{
+			listaProdutos = listaProdutos + $"\n- {produto.Marca} {produto.Modelo}";
+		}
 
 		return "Id: " + Id + "\nValor: " + Valor + "\nFormaPagamento: " + FormaPagamento + "\nProdutos: " + listaProdutos + "\nCliente: " + Cliente.getNome() + "\nVendedor: " + Vendedor.getNome(); 
 	}
