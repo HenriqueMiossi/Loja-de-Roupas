@@ -1,18 +1,117 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 
 class Cli
 {
-    public void getArquivoSave()
-    {
-        // Chamar classe de persistência, método para ler o JSON
-        // Converter a string de JSON para objeto(s)
-    }
+	public Produto getArquivoProduto(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Produto p = JsonSerializer.Deserialize<Produto>(jsonString);
+		return p;
+	}
 
-    public void salvaArquivo()
-    {
-        // Chamar classe de persistência, método para gravar o JSON
-    }
+	public Estoque getArquivoEstoque(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Estoque e = JsonSerializer.Deserialize<Estoque>(jsonString);
+		return e;
+	}
+
+	public Loja getArquivoLoja(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Loja j = JsonSerializer.Deserialize<Loja>(jsonString);
+		return j;
+	}
+
+	public Endereco getArquivoEndereco(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Endereco e = JsonSerializer.Deserialize<Endereco>(jsonString);
+		return e;
+	}
+
+	public Pessoa getArquivoPessoa(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Pessoa p = JsonSerializer.Deserialize<Pessoa>(jsonString);
+		return p;
+	}
+
+	public Vendedor getArquivoVendedor(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Vendedor v = JsonSerializer.Deserialize<Vendedor>(jsonString);
+		return v;
+	}
+
+	public Venda getArquivoVenda(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Venda v = JsonSerializer.Deserialize<Venda>(jsonString);
+		return v;
+	}
+
+	public VendaOnline getArquivoVendaOnline(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		VendaOnline vo = JsonSerializer.Deserialize<VendaOnline>(jsonString);
+		return vo;
+	}
+
+	public EntregaPadrao getArquivoEntregaPadrao(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		EntregaPadrao ep = JsonSerializer.Deserialize<EntregaPadrao>(jsonString);
+		return ep;
+	}
+
+	public EntregaExpressa getArquivoEntregaExpressa(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		EntregaExpressa ex = JsonSerializer.Deserialize<EntregaExpressa>(jsonString);
+		return ex;
+	}
+
+	public BoletoBancario getArquivoBoletoBancario(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		BoletoBancario b = JsonSerializer.Deserialize<BoletoBancario>(jsonString);
+		return b;
+	}
+
+	public CartaoCredito getArquivoCartaoCredito(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		CartaoCredito cc = JsonSerializer.Deserialize<CartaoCredito>(jsonString);
+		return cc;
+	}
+
+	public CartaoDebito getArquivoCartaoDebito(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		CartaoDebito cd = JsonSerializer.Deserialize<CartaoDebito>(jsonString);
+		return cd;
+	}
+
+	public Dinheiro getArquivoDinheiro(string nomeArquivo)
+	{
+		string jsonString = Persistencia.BuscarJson(nomeArquivo);
+		Dinheiro d = JsonSerializer.Deserialize<Dinheiro>(jsonString);
+		return d;
+	}
+
+	public void salvaArquivo(Object objeto)
+	{
+		string jsonString = Persistencia.Serializar(objeto);
+
+		Console.Write("Insira o nome do arquivo: ");
+		string nomeArquivo = Console.ReadLine();
+		Persistencia.SalvarJson(nomeArquivo, jsonString);
+
+		Console.WriteLine("Arquivo salvo com sucesso.");
+	}
 
     public Produto cadastraProduto()
     {
