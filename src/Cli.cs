@@ -247,4 +247,17 @@ class Cli
 
         return new Loja(cnpj, nomeFantasia, nomePropietario, endereco, estoque);
     }
+
+    ITipoEntrega selecionaTipoEntrega()
+    {
+        System.Console.Write("Selecione a forma de envio" + 
+            "(1 = Entrega Expressa, 2 = Entrega Padrão): ");
+
+        string tipoEntrega = Console.ReadLine();
+
+        if (tipoEntrega == "1")
+            return new EntregaExpressa();
+        else
+            return new EntregaPadrao();
+    }
 }
