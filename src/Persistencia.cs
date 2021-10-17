@@ -3,7 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-class static Persistencia
+static class Persistencia
 {
 	public static string nomePasta = @"json";
 	private static string path;
