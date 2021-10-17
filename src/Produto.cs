@@ -17,6 +17,6 @@ class Produto
 
     public override string ToString()
     {
-        return "Id: " + Id + "\nCategoria: " + Categoria + "\nMarca: " + Marca + "\nModelo: " + Modelo + "Preço: " + Preco;
+        return "Id: " + Id + "\nCategoria: " + Categoria + "\nMarca: " + Marca + "\nModelo: " + Modelo + "\nPreço: " + Preco;
     }
 }
