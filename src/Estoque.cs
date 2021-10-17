@@ -28,4 +28,17 @@ class Estoque
         }
         return produtosToString;
     }
+
+    public Produto CompraProduto(int indice)
+    {
+        if (VerificarEstoqueProduto(Produtos[indice].Id))
+        {
+            Produto produto = Produtos[indice];
+            SairProduto(produto);
+
+            return produto;
+        }
+        else
+            return null;
+    }
 }

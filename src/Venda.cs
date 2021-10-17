@@ -10,9 +10,11 @@ class Venda
 	public Cliente Cliente;
 	public Vendedor Vendedor;
 	
-	public Venda(int id, double valor, IFormaPagamento formaPagamento, List<Produto> produtos, Cliente cliente, Vendedor vendedor)
+	public Venda(double valor, IFormaPagamento formaPagamento, List<Produto> produtos, Cliente cliente, Vendedor vendedor)
 	{
-		Id = id;
+		var random = new Random();
+		Id = random.Next(100000000, 999999999);
+		
 		Valor = valor;
 		FormaPagamento = formaPagamento;
 		_produtos = produtos;

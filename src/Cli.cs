@@ -16,20 +16,20 @@ class Cli
 
     public Produto cadastraProduto()
     {
-        System.Console.Write("Insira a categoria: ");
+        Console.Write("Insira a categoria: ");
         string categoria = Console.ReadLine();
 
-        System.Console.Write("Insira a marca: ");
+        Console.Write("Insira a marca: ");
         string marca = Console.ReadLine();
 
-        System.Console.Write("Insira o modelo: ");
+        Console.Write("Insira o modelo: ");
         string modelo = Console.ReadLine();
-        
-        System.Console.Write("Insira o preço: ");
+
+        Console.Write("Insira o preço: ");
         double preco = Convert.ToDouble(Console.ReadLine());
 
         var random = new Random();
-		int id = random.Next(100000000, 999999999);
+        int id = random.Next(100000000, 999999999);
 
         return new Produto(id, categoria, marca, modelo, preco);
     }
@@ -40,22 +40,22 @@ class Cli
 
         if (uf == "AC")
             return UnidadeFederativa.AC;
-        
+
         else if (uf == "AL")
             return UnidadeFederativa.AL;
-        
+
         else if (uf == "AM")
             return UnidadeFederativa.AM;
-            
+
         else if (uf == "AP")
             return UnidadeFederativa.AP;
-        
+
         else if (uf == "BA")
             return UnidadeFederativa.BA;
-        
+
         else if (uf == "CE")
             return UnidadeFederativa.CE;
-        
+
         else if (uf == "DF")
             return UnidadeFederativa.DF;
 
@@ -97,7 +97,7 @@ class Cli
 
         else if (uf == "RN")
             return UnidadeFederativa.RN;
-        
+
         else if (uf == "RO")
             return UnidadeFederativa.RO;
 
@@ -125,20 +125,20 @@ class Cli
 
     Endereco cadastraEndereco()
     {
-        System.Console.Write("Insira o número: ");
+        Console.Write("Insira o número: ");
         int numero = Convert.ToInt32(Console.ReadLine());
 
-        System.Console.Write("Insira o bairro: ");
+        Console.Write("Insira o bairro: ");
         string bairro = Console.ReadLine();
-        
-        System.Console.Write("Insira a cidade: ");
+
+        Console.Write("Insira a cidade: ");
         string cidade = Console.ReadLine();
 
-        System.Console.Write("Insira o CEP: ");
+        Console.Write("Insira o CEP: ");
         string cep = Console.ReadLine();
 
-    
-        System.Console.Write("Insira a UF: ");
+
+        Console.Write("Insira a UF: ");
         UnidadeFederativa unidadeFederativa = cadastraUF();
 
         return new Endereco(numero, bairro, cidade, unidadeFederativa, cep);
@@ -146,16 +146,16 @@ class Cli
 
     public Cliente cadastraCliente()
     {
-        System.Console.Write("Insira o nome: ");
+        Console.Write("Insira o nome: ");
         string nome = Console.ReadLine();
 
-        System.Console.Write("Insira o cpf: ");
+        Console.Write("Insira o cpf: ");
         string cpf = Console.ReadLine();
 
-        System.Console.Write("Insira o email: ");
+        Console.Write("Insira o email: ");
         string email = Console.ReadLine();
 
-        System.Console.Write("Insira o telefone: ");
+        Console.Write("Insira o telefone: ");
         int telefone = Convert.ToInt32(Console.ReadLine());
 
         Endereco endereco = cadastraEndereco();
@@ -165,22 +165,22 @@ class Cli
 
     public Vendedor cadastraVendedor()
     {
-        System.Console.Write("Insira o telefone: ");
+        Console.Write("Insira o salário: ");
         double salario = Convert.ToDouble(Console.ReadLine());
 
-        System.Console.Write("Insira o telefone: ");
+        Console.Write("Insira a matrícula: ");
         int matricula = Convert.ToInt32(Console.ReadLine());
 
-        System.Console.Write("Insira o nome: ");
+        Console.Write("Insira o nome: ");
         string nome = Console.ReadLine();
 
-        System.Console.Write("Insira o cpf: ");
+        Console.Write("Insira o cpf: ");
         string cpf = Console.ReadLine();
 
-        System.Console.Write("Insira o email: ");
+        Console.Write("Insira o email: ");
         string email = Console.ReadLine();
 
-        System.Console.Write("Insira o telefone: ");
+        Console.Write("Insira o telefone: ");
         int telefone = Convert.ToInt32(Console.ReadLine());
 
         Endereco endereco = cadastraEndereco();
@@ -190,7 +190,7 @@ class Cli
 
     IFormaPagamento selecionaFormaPagamento()
     {
-        System.Console.Write("Selecione a forma de pagamento" + 
+        Console.Write("Selecione a forma de pagamento" +
             "(1 = Boleto Bancário, 2 = Cartão de Crédito, 3 = Cartão de Débito, 4 = Dinheiro): ");
 
         string tipoPagamento = Console.ReadLine();
@@ -207,39 +207,42 @@ class Cli
 
     public Venda selecionaTipoVenda(double valor, List<Produto> produtos, Cliente cliente, Vendedor vendedor)
     {
-        System.Console.Write("Selecione o tipo da venda (1 = Venda Normal, 2 = Venda Online): ");
+        Console.Write("Selecione o tipo da venda (1 = Venda Normal, 2 = Venda Online): ");
         string tipoVenda = Console.ReadLine();
 
         if (tipoVenda == "1")
         {
             var random = new Random();
-		    int id = random.Next(100000000, 999999999);
+            int id = random.Next(100000000, 999999999);
 
             IFormaPagamento formaPagamento = selecionaFormaPagamento();
 
-            return new Venda(id, valor, formaPagamento, produtos, cliente, vendedor);
+            return new Venda(valor, formaPagamento, produtos, cliente, vendedor);
         }
 
         else
         {
             var random = new Random();
-		    int id = random.Next(100000000, 999999999);
+            int id = random.Next(100000000, 999999999);
 
             IFormaPagamento formaPagamento = selecionaFormaPagamento();
+            ITipoEntrega entrega = selecionaTipoEntrega();
 
-            return new VendaOnline(id, valor, formaPagamento, produtos, cliente, vendedor);
+            entrega.despachar();
+
+            return new VendaOnline(valor, formaPagamento, produtos, cliente, vendedor, entrega);
         }
     }
 
     public Loja cadastraLoja()
     {
-        System.Console.Write("Insira o CNPJ: ");
+        Console.Write("Insira o CNPJ: ");
         string cnpj = Console.ReadLine();
 
-        System.Console.Write("Insira o Nome Fantasia: ");
+        Console.Write("Insira o Nome Fantasia: ");
         string nomeFantasia = Console.ReadLine();
 
-        System.Console.Write("Insira o Nome do Proprietário: ");
+        Console.Write("Insira o Nome do Proprietário: ");
         string nomePropietario = Console.ReadLine();
 
         Endereco endereco = cadastraEndereco();
@@ -248,9 +251,9 @@ class Cli
         return new Loja(cnpj, nomeFantasia, nomePropietario, endereco, estoque);
     }
 
-    ITipoEntrega selecionaTipoEntrega()
+    public ITipoEntrega selecionaTipoEntrega()
     {
-        System.Console.Write("Selecione a forma de envio" + 
+        Console.Write("Selecione a forma de envio" +
             "(1 = Entrega Expressa, 2 = Entrega Padrão): ");
 
         string tipoEntrega = Console.ReadLine();
@@ -259,5 +262,129 @@ class Cli
             return new EntregaExpressa();
         else
             return new EntregaPadrao();
+    }
+
+    public void programa()
+    {
+        Cli cli = new Cli();
+        List<Loja> listaLojas = new List<Loja>();
+        List<Cliente> listaClientes = new List<Cliente>();
+        List<Vendedor> listaVendedor = new List<Vendedor>();
+
+        while (true)
+        {
+            Console.WriteLine("\n-- Menu principal --"
+            + "\n1 - Cadastrar uma loja"
+            + "\n2 - Cadastrar um cliente"
+            + "\n3 - Cadastrar um vendedor"
+            + "\n4 - Cadastrar um produto"
+            + "\n5 - Realizar uma venda"
+            + "\n0 - Sair do programa");
+
+            string escolha = Console.ReadLine();
+
+            if (escolha == "0")
+                break;
+
+            else if (escolha == "1")
+            {
+                listaLojas.Add(cli.cadastraLoja());
+            }
+            
+            else if (escolha == "2")
+            {
+                listaClientes.Add(cli.cadastraCliente());
+            }
+
+            else if (escolha == "3")
+            {
+                listaVendedor.Add(cli.cadastraVendedor());
+            }
+
+            else if (escolha == "4")
+            {
+                Console.WriteLine("Em qual loja deseja cadastrar o produto? ");
+                for (int i = 0; i < listaLojas.Count; i++)
+                {
+                    Console.WriteLine($"{i} - {listaLojas[i].NomeFantasia}");
+                }
+                int indiceLoja = Convert.ToInt32(Console.ReadLine());
+
+                listaLojas[indiceLoja].Estoque.EntrarProduto(cli.cadastraProduto());
+
+                // List<string> coisas = listaLojas[indiceLoja].Estoque.ListarEstoque();
+                // foreach (string coisa in coisas)
+                // {
+                //     Console.WriteLine(coisa);
+                // }
+            }
+
+            else if (escolha == "5")
+            {
+                List<Produto> carrinhoCompras = new List<Produto>();
+                
+                Console.WriteLine("Em qual loja deseja realizar a venda? ");
+                for (int i = 0; i < listaLojas.Count; i++)
+                {
+                    Console.WriteLine($"{i} - {listaLojas[i].NomeFantasia}");
+                }
+                int indiceLoja = Convert.ToInt32(Console.ReadLine());
+
+                while (true)
+                {
+                    Console.WriteLine("-- Produtos --");
+                    List<string> produtos = listaLojas[indiceLoja].Estoque.ListarEstoque();
+                    foreach (string p in produtos)
+                    {
+                        Console.WriteLine(p);
+                    }
+                    int indiceProduto = Convert.ToInt32(Console.ReadLine());
+
+                    try
+                    {
+                        Produto produto = listaLojas[indiceLoja].Estoque.CompraProduto(indiceProduto);
+                        carrinhoCompras.Add(produto);
+                    }
+                    catch (Exception e)
+                    {
+                        foreach (Produto p in carrinhoCompras)
+                        {
+                            Console.WriteLine("Carrinho:\n");
+                            Console.WriteLine(" - " + p.Modelo);
+                        }
+
+                        break;
+                    }
+                }
+
+                double precoTotal = 0;
+
+                foreach (Produto produto in carrinhoCompras)
+                {
+                    precoTotal += produto.Preco;
+                }
+
+                Console.WriteLine("Escolha um cliente: ");
+                foreach (Cliente cliente in listaClientes)
+                {
+                    Console.WriteLine(cliente.getNome());
+                }
+                Cliente clienteEscolhido = listaClientes[Convert.ToInt32(Console.ReadLine())];
+
+                Console.WriteLine("Escolha um vendedor: ");
+                foreach (Vendedor vendedor in listaVendedor)
+                {
+                    Console.WriteLine(vendedor.getNome());
+                }
+                Vendedor vendedorEscolhido = listaVendedor[Convert.ToInt32(Console.ReadLine())];
+
+                Console.WriteLine($"Preco total: {precoTotal}");
+                Console.WriteLine($"Cliente: {clienteEscolhido.getNome()}");
+                Console.WriteLine($"Vendedor: {vendedorEscolhido.getNome()}");
+
+                Venda tipoVenda = selecionaTipoVenda(precoTotal, carrinhoCompras, clienteEscolhido, vendedorEscolhido);
+                tipoVenda.ToString();
+            }
+        }
     }
 }
