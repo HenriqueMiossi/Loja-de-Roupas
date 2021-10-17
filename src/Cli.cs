@@ -279,6 +279,8 @@ class Cli
             + "\n3 - Cadastrar um vendedor"
             + "\n4 - Cadastrar um produto"
             + "\n5 - Realizar uma venda"
+            + "\n6 - Ler arquivo de save"
+            + "\n7 - Salvar"
             + "\n0 - Sair do programa");
 
             string escolha = Console.ReadLine();
@@ -345,7 +347,7 @@ class Cli
                         Produto produto = listaLojas[indiceLoja].Estoque.CompraProduto(indiceProduto);
                         carrinhoCompras.Add(produto);
                     }
-                    catch (Exception e)
+                    catch
                     {
                         foreach (Produto p in carrinhoCompras)
                         {
@@ -384,6 +386,16 @@ class Cli
 
                 Venda tipoVenda = selecionaTipoVenda(precoTotal, carrinhoCompras, clienteEscolhido, vendedorEscolhido);
                 tipoVenda.ToString();
+            }
+
+            else if (escolha == "6")
+            {
+                
+            }
+
+            else if (escolha == "7")
+            {
+
             }
         }
     }
