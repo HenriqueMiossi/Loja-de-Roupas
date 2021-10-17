@@ -4,8 +4,6 @@ class Estoque
 {
     List<Produto> Produtos = new List<Produto>();
 
-    public Estoque() { }
-
     public void EntrarProduto(Produto produto)
     {
         Produtos.Add(produto);

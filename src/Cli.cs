@@ -125,9 +125,6 @@ class Cli
 
     Endereco cadastraEndereco()
     {
-        System.Console.Write("Insira o nome: ");
-        string nome = Console.ReadLine();
-
         System.Console.Write("Insira o número: ");
         int numero = Convert.ToInt32(Console.ReadLine());
 
@@ -144,7 +141,7 @@ class Cli
         System.Console.Write("Insira a UF: ");
         UnidadeFederativa unidadeFederativa = cadastraUF();
 
-        return new Endereco(nome, numero, bairro, cidade, unidadeFederativa, cep);
+        return new Endereco(numero, bairro, cidade, unidadeFederativa, cep);
     }
 
     public Cliente cadastraCliente()
@@ -234,5 +231,20 @@ class Cli
         }
     }
 
-    
+    public Loja cadastraLoja()
+    {
+        System.Console.Write("Insira o CNPJ: ");
+        string cnpj = Console.ReadLine();
+
+        System.Console.Write("Insira o Nome Fantasia: ");
+        string nomeFantasia = Console.ReadLine();
+
+        System.Console.Write("Insira o Nome do Proprietário: ");
+        string nomePropietario = Console.ReadLine();
+
+        Endereco endereco = cadastraEndereco();
+        Estoque estoque = new Estoque();
+
+        return new Loja(cnpj, nomeFantasia, nomePropietario, endereco, estoque);
+    }
 }

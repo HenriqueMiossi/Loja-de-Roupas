@@ -1,15 +1,13 @@
 class Endereco
 {
-	public string Nome { get; set; }
 	public int Numero { get; set; }
 	public string Bairro { get; set; }
 	public string Cidade { get; set; }
 	public UnidadeFederativa UnidadeFederativa { get; set; }
 	public string Cep { get; set; }
 	
-	public Endereco(string nome, int numero, string bairro, string cidade, UnidadeFederativa unidadeFederativa, string cep)
+	public Endereco(int numero, string bairro, string cidade, UnidadeFederativa unidadeFederativa, string cep)
 	{
-		Nome = nome;
 		Numero = numero;
 		Bairro = bairro;
 		Cidade = cidade;
@@ -19,6 +17,6 @@ class Endereco
 
 	public override string ToString()
 	{
-		return "Nome: " + Nome + "\nNumero: " + Numero + "\nBairro: " + Bairro + "\nCidade: " + Cidade + "\nCep: " + Cep + "\nUnidadeFederativa: " + UnidadeFederativa; 
+		return "Numero: " + Numero + "\nBairro: " + Bairro + "\nCidade: " + Cidade + "\nCep: " + Cep + "\nUnidadeFederativa: " + UnidadeFederativa; 
 	}
 }
