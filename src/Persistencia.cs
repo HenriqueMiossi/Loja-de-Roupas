@@ -1,25 +1,45 @@
 using System;
 using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace Loja_de_Roupas
+class static Persistencia
 {
-    class Persistencia : IPersistencia
-    {
-        string converteEmJson(Object objeto)
-        {
-            return JsonConvert.SerializeObject(objeto, Formatting.Indented);
-        }
+	public static string nomePasta = @"json";
+	private static string path;
 
-        void salvaJsonEmArquivo(string json)
-        {
-            File.WriteAllText(@"./teste.json", json);
-        }
+	public static string Serializar(Object objeto)
+	{
+		return JsonSerializer.Serialize(objeto);
+	}
 
-        public void salvaObjetoEmArquivo(Object objeto)
-        {
-            string jsonString = converteEmJson(objeto);
-            salvaJsonEmArquivo(jsonString);
-        }
-    }
+	public static void SalvarJson(string nomeArquivo, string jsonString)
+	{
+		nomeArquivo = $"{nomeArquivo}.json";
+		path = Path.Combine(nomePasta, nomeArquivo);
+		try
+		{
+			if(!Directory.Exists(nomePasta))
+			{
+				Directory.CreateDirectory(nomePasta);
+				File.WriteAllText(path, jsonString);
+			}
+			File.WriteAllText(path, jsonString);
+		}
+		catch (Exception e)
+		{
+			throw new ArgumentException("O processo falhou: ", e);
+		}
+	}
+
+	public static string BuscarJson(string nomeArquivo)
+	{
+		string path;
+		string jsonString;
+
+		path = Path.Combine(nomePasta, nomeArquivo);
+		jsonString = File.ReadAllText(path);
+
+		return jsonString;
+	}
 }
