@@ -24,6 +24,6 @@ class VendaOnline : Venda
 			listaProdutos = listaProdutos + $"\n- {produto.Marca} {produto.Modelo}";
 		}
 
-        return "Id: " + Id + "\nValor: " + Valor + "\nFormaPagamento: " + FormaPagamento + "\nProdutos: " + listaProdutos + "\nCliente: " + Cliente.getNome() + "\nVendedor: " + Vendedor.getNome();
+        return "Tipo de Venda: Venda Online" + "\nId: " + Id + "\nValor: " + Valor + "\nForma de Pagamento: " + FormaPagamento + "\nProdutos: " + listaProdutos + "\nCliente: " + Cliente.getNome() + "\nVendedor: " + Vendedor.getNome();
     }
 }

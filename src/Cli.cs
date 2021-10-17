@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Cli
 {
@@ -189,4 +190,49 @@ class Cli
 
         return new Vendedor(salario, matricula, nome, cpf, email, endereco, telefone);
     }
+
+    IFormaPagamento selecionaFormaPagamento()
+    {
+        System.Console.Write("Selecione a forma de pagamento" + 
+            "(1 = Boleto Bancário, 2 = Cartão de Crédito, 3 = Cartão de Débito, 4 = Dinheiro): ");
+
+        string tipoPagamento = Console.ReadLine();
+
+        if (tipoPagamento == "1")
+            return new BoletoBancario();
+        else if (tipoPagamento == "2")
+            return new CartaoCredito();
+        else if (tipoPagamento == "3")
+            return new CartaoDebito();
+        else
+            return new Dinheiro();
+    }
+
+    public Venda selecionaTipoVenda(double valor, List<Produto> produtos, Cliente cliente, Vendedor vendedor)
+    {
+        System.Console.Write("Selecione o tipo da venda (1 = Venda Normal, 2 = Venda Online): ");
+        string tipoVenda = Console.ReadLine();
+
+        if (tipoVenda == "1")
+        {
+            var random = new Random();
+		    int id = random.Next(100000000, 999999999);
+
+            IFormaPagamento formaPagamento = selecionaFormaPagamento();
+
+            return new Venda(id, valor, formaPagamento, produtos, cliente, vendedor);
+        }
+
+        else
+        {
+            var random = new Random();
+		    int id = random.Next(100000000, 999999999);
+
+            IFormaPagamento formaPagamento = selecionaFormaPagamento();
+
+            return new VendaOnline(id, valor, formaPagamento, produtos, cliente, vendedor);
+        }
+    }
+
+    
 }
