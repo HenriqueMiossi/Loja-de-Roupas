@@ -24,7 +24,7 @@ class Estoque
         List<string> produtosToString = new List<string>();
         foreach (Produto produto in Produtos)
         {
-            produtosToString.Add(produto.ToString());
+            produtosToString.Add(produto.Marca + " - " + produto.Modelo);
         }
         return produtosToString;
     }
