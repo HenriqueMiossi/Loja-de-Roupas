@@ -489,12 +489,17 @@ class Cli
 
             else if (escolha == "6")
             {
-                
+                Console.Write("Insira o nome do arquivo: ");
+                string nome = Console.ReadLine();
+                listaLojas.Add(cli.getArquivoLoja(nome));
             }
 
             else if (escolha == "7")
             {
-
+                foreach (Loja loja in listaLojas)
+                {
+                    cli.salvaArquivo(loja);
+                }
             }
         }
     }
